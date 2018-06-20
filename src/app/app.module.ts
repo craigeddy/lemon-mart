@@ -11,6 +11,8 @@ import { PosModule } from './pos/pos.module'
 import { UserModule } from './user/user.module'
 import { HomeComponent } from './home/home.component'
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
+import { HttpClientModule } from '@angular/common/http'
+import { FlexLayoutModule } from '@angular/flex-layout'
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, PageNotFoundComponent],
@@ -23,6 +25,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     InventoryModule,
     PosModule,
     UserModule,
+    HttpClientModule,
+    FlexLayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
