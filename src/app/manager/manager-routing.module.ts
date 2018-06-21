@@ -7,6 +7,7 @@ import { ReceiptLookupComponent } from './receipt-lookup/receipt-lookup.componen
 
 const routes: Routes = [
   {
+    // see page 284
     path: '',
     component: ManagerComponent,
     children: [
