@@ -10,6 +10,11 @@ import { Component, OnInit } from '@angular/core'
         routerLinkActive="active-link">User Management</a>
       <a mat-button routerLink="/manager/receipts"
         routerLinkActive="active-link">Receipt Lookup</a>
+      <span class="flex-spacer"></span>
+      <a mat-button routerLink="/inventory"
+        routerLinkActive="active-link">Inventory</a>
+      <a mat-button routerLink="/pos"
+        routerLinkActive="active-link">Point-of-Sale</a>
     </mat-toolbar>
     <router-outlet></router-outlet>
   `,
