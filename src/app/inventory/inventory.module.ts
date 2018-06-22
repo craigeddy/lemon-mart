@@ -10,7 +10,7 @@ import { ProductsComponent } from './products/products.component'
 import { CategoriesComponent } from './categories/categories.component'
 
 @NgModule({
-  imports: [CommonModule, InventoryRoutingModule],
+  imports: [CommonModule, InventoryRoutingModule, MaterialModule],
   declarations: [
     InventoryComponent,
     InventoryHomeComponent,
