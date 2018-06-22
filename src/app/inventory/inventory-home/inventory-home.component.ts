@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core'
 
 @Component({
-  selector: 'app-inventory',
+  selector: 'app-inventory-home',
   template: `
     <p>
-      inventory works!
+      inventory-home works!
     </p>
   `,
   styles: [],
 })
-export class InventoryComponent implements OnInit {
+export class InventoryHomeComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
