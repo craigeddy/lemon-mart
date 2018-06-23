@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { InventoryHomeComponent } from './inventory-home.component'
+import { HttpClientModule } from '@angular/common/http'
+import { MaterialModule } from '../../material.module'
 
 describe('InventoryHomeComponent', () => {
   let component: InventoryHomeComponent
@@ -8,6 +10,7 @@ describe('InventoryHomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [MaterialModule, HttpClientModule],
       declarations: [InventoryHomeComponent],
     }).compileComponents()
   }))
