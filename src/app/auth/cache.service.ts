@@ -1,4 +1,3 @@
-
 export abstract class CacheService {
   protected getItem<T>(key: string): T {
     const data = localStorage.getItem(key)
