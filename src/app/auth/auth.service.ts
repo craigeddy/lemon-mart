@@ -10,6 +10,7 @@ import { catchError, map } from 'rxjs/operators'
 import { environment } from '../../environments/environment'
 import { Role } from './role.enum'
 import { transformError } from '../common/common'
+import { CacheService } from './cache.service'
 
 export interface IAuthStatus {
   isAuthenticated: boolean
@@ -30,15 +31,20 @@ const defaultAuthStatus = {
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService {
+export class AuthService extends CacheService {
   private readonly authProvider: (
     email: string,
     password: string
   ) => Observable<IServerAuthResponse>
 
-  authStatus = new BehaviorSubject<IAuthStatus>(defaultAuthStatus)
+  authStatus = new BehaviorSubject<IAuthStatus>(
+    this.getItem('authStatus') || defaultAuthStatus
+  )
 
   constructor(private httpClient: HttpClient) {
+    super()
+    this.authStatus.subscribe(authStatus => this.setItem('authStatus', authStatus))
+
     this.authProvider = this.fakeAuthProvider
   }
 
