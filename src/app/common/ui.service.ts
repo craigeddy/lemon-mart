@@ -7,6 +7,7 @@ import {
 } from '@angular/material'
 
 import { Observable } from 'rxjs'
+import { SimpleDialogComponent } from './simple-dialog/simple-dialog.component'
 
 @Injectable()
 export class UiService {
@@ -20,5 +21,23 @@ export class UiService {
         duration: 7000,
       }
     )
+  }
+
+  showDialog(
+    title: string,
+    content: string,
+    okText: 'OK',
+    cancelText?: string,
+    customConfig?: MatDialogConfig
+  ): Observable<Boolean> {
+    const dialogRef = this.dialog.open(
+      SimpleDialogComponent,
+      customConfig || {
+        width: '300px',
+        data: { title: title, content: content, okText: okText, cancelText: cancelText },
+      }
+    )
+
+    return dialogRef.afterClosed()
   }
 }

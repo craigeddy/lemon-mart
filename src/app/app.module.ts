@@ -12,9 +12,16 @@ import { HttpClientModule } from '@angular/common/http'
 import { FlexLayoutModule } from '@angular/flex-layout'
 import { LoginComponent } from './login/login.component'
 import { UiService } from './common/ui.service'
+import { SimpleDialogComponent } from './common/simple-dialog/simple-dialog.component'
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, PageNotFoundComponent, LoginComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    PageNotFoundComponent,
+    LoginComponent,
+    SimpleDialogComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
