@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component'
 import { UiService } from './common/ui.service'
 import { SimpleDialogComponent } from './common/simple-dialog/simple-dialog.component'
 import { AuthHttpInterceptor } from './auth/auth-http-interceptor'
+import { NavigationMenuComponent } from './navigation-menu/navigation-menu.component'
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AuthHttpInterceptor } from './auth/auth-http-interceptor'
     PageNotFoundComponent,
     LoginComponent,
     SimpleDialogComponent,
+    NavigationMenuComponent,
   ],
   imports: [
     BrowserModule,
