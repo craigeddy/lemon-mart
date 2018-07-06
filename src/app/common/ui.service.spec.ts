@@ -1,10 +1,12 @@
 import { TestBed, inject } from '@angular/core/testing'
 
 import { UiService } from './ui.service'
+import { MaterialModule } from '../material.module'
 
 describe('UiService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports: [MaterialModule],
       providers: [UiService],
     })
   })

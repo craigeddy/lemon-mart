@@ -8,6 +8,7 @@ import { SecurityContext } from '@angular/platform-browser/src/security/dom_sani
 import { RouterTestingModule } from '@angular/router/testing'
 import { Observable, Subscription, of } from 'rxjs'
 import { MaterialModule } from '../material.module'
+import { UiService } from './ui.service'
 
 const FAKE_SVGS = {
   lemon: '<svg><path id="lemon" name="lemon"></path></svg>',
@@ -64,7 +65,7 @@ export class DomSanitizerFake {
   }
 }
 
-export const commonTestingProviders: any[] = []
+export const commonTestingProviders: any[] = [UiService]
 
 export const commonTestingModules: any[] = [
   FormsModule,

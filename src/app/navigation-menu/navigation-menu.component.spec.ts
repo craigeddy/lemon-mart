@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { NavigationMenuComponent } from './navigation-menu.component'
+import { commonTestingModules, commonTestingProviders } from '../common/common.testing'
 
 describe('NavigationMenuComponent', () => {
   let component: NavigationMenuComponent
@@ -8,6 +9,8 @@ describe('NavigationMenuComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [commonTestingModules],
+      providers: [commonTestingProviders],
       declarations: [NavigationMenuComponent],
     }).compileComponents()
   }))

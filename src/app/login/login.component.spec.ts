@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { LoginComponent } from './login.component'
+import { MaterialModule } from '../material.module'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { commonTestingModules, commonTestingProviders } from '../common/common.testing'
 
 describe('LoginComponent', () => {
   let component: LoginComponent
@@ -8,6 +11,8 @@ describe('LoginComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [commonTestingModules],
+      providers: [commonTestingProviders],
       declarations: [LoginComponent],
     }).compileComponents()
   }))
