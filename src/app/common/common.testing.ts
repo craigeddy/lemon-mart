@@ -9,6 +9,8 @@ import { RouterTestingModule } from '@angular/router/testing'
 import { Observable, Subscription, of } from 'rxjs'
 import { MaterialModule } from '../material.module'
 import { UiService } from './ui.service'
+import { AuthService } from '../auth/auth.service'
+import { AuthServiceFake } from '../auth/auth.service.fake'
 
 const FAKE_SVGS = {
   lemon: '<svg><path id="lemon" name="lemon"></path></svg>',
@@ -65,7 +67,10 @@ export class DomSanitizerFake {
   }
 }
 
-export const commonTestingProviders: any[] = [UiService]
+export const commonTestingProviders: any[] = [
+  { provide: AuthService, useClass: AuthServiceFake },
+  UiService,
+]
 
 export const commonTestingModules: any[] = [
   FormsModule,
