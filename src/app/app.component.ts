@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { DomSanitizer } from '@angular/platform-browser'
 import { MatIconRegistry } from '@angular/material'
-import { AuthService } from './auth/auth.service'
+import { AuthService, IAuthStatus } from './auth/auth.service'
 import { ObservableMedia } from '@angular/flex-layout'
 
 @Component({
@@ -26,9 +26,10 @@ import { ObservableMedia } from '@angular/flex-layout'
     </mat-toolbar>
     <mat-sidenav-container class="app-sidenav-container">
       <mat-sidenav #sidenav [mode]="media.isActive('xs') ? 'over' : 'side'"
-                  [fixedInViewport]="media.isActive('xs')" fixedTopGap="56">
-        <app-navigation-menu></app-navigation-menu>
-      </mat-sidenav>
+                  [fixedInViewport]="media.isActive('xs')" fixedTopGap="56"
+                  >
+        <app-navigation-menu *ngIf="displayAccountIcons"></app-navigation-menu>
+        </mat-sidenav>
       <mat-sidenav-content>
         <router-outlet class="app-container"></router-outlet>
       </mat-sidenav-content>
@@ -65,6 +66,7 @@ import { ObservableMedia } from '@angular/flex-layout'
 export class AppComponent implements OnInit {
   title = 'app'
   _displayAccountIcons = false
+  private _authStatus: IAuthStatus
 
   constructor(
     iconRegistry: MatIconRegistry,
@@ -81,12 +83,12 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.authService.authStatus.subscribe(authStatus => {
       setTimeout(() => {
-        this._displayAccountIcons = authStatus.isAuthenticated
+        this._authStatus = authStatus
       }, 0)
     })
   }
 
   get displayAccountIcons() {
-    return this._displayAccountIcons
+    return this._authStatus && this._authStatus.isAuthenticated
   }
 }
