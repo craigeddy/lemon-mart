@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup
   loginError = ''
   redirectUrl
+  hide = true
 
   constructor(
     private formBuilder: FormBuilder,
