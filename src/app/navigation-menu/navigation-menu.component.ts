@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core'
+import { AuthService, IAuthStatus } from '../auth/auth.service'
+import { Role } from '../auth/role.enum'
 
 @Component({
   selector: 'app-navigation-menu',
@@ -12,9 +14,9 @@ import { Component, OnInit } from '@angular/core'
   ],
   template: `
     <mat-nav-list>
-      <h3 matSubheader>Manager</h3>
-      <a mat-list-item routerLinkActive="active-link" routerLink="/manager/users">Users</a>
-      <a mat-list-item routerLinkActive="active-link" routerLink="/manager/receipts">Receipts</a>
+      <h3 matSubheader *ngIf="isManager">Manager</h3>
+      <a mat-list-item *ngIf="isManager" routerLinkActive="active-link" routerLink="/manager/users">Users</a>
+      <a mat-list-item *ngIf="isManager" routerLinkActive="active-link" routerLink="/manager/receipts">Receipts</a>
       <h3 matSubheader>Inventory</h3>
       <a mat-list-item routerLinkActive="active-link" routerLink="/inventory/stockEntry">Stock Entry</a>
       <a mat-list-item routerLinkActive="active-link" routerLink="/inventory/products">Products</a>
@@ -25,7 +27,21 @@ import { Component, OnInit } from '@angular/core'
   `,
 })
 export class NavigationMenuComponent implements OnInit {
-  constructor() {}
+  _role: Role
 
-  ngOnInit() {}
+  constructor(private authService: AuthService) {
+    this._role = Role.None
+  }
+
+  ngOnInit() {
+    this.authService.authStatus.subscribe(authStatus => {
+      setTimeout(() => {
+        this._role = authStatus.userRole
+      }, 0)
+    })
+  }
+
+  get isManager(): boolean {
+    return this._role === Role.Manager
+  }
 }
