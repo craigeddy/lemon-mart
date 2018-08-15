@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private uiService: UiService
   ) {
-    route.paramMap.subscribe(params => (this.redirectUrl = params.get('redirectUrl')))
+    this.route.paramMap.subscribe(params => (this.redirectUrl = params.get('redirectUrl')))
   }
 
   ngOnInit() {
